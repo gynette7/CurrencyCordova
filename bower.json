@@ -1,0 +1,21 @@
+{
+  "name": "workshop1",
+  "homepage": "https://github.com/chukmunnlee/madh5_workshop",
+  "authors": [
+    "gynette <gynette7@yahoo.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.6.6",
+    "bootstrap": "^3.3.7"
+  }
+}

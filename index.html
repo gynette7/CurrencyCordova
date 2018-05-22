@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="NoteApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Workshop 1</title>
+    <!-- Load bootstrap css-->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+    <!-- scripts -->
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/index.js"></script>
+
+</head>
+<body ng-controller="NoteCtrl as noteCtrl">
+    <div class="container">
+    <h1><code>My Notes</code></h1>
+    <div class="row">
+        <div class="col-md-6">
+            <form name="noteForm" ng-submit="noteCtrl.addNote()" novalidate>
+                <div class="form-group" ng-class="{'has-error':noteCtrl.hasError(noteForm.titleField)}">
+                    <label for="titleField">Title:</label>
+                    <input type="text" name="titleField" id="titleField" ng-model="noteCtrl.title" class="form-control" required>
+                </div>
+                <div class="form-group" ng-class="{'has-error':noteCtrl.hasError(noteForm.noteField)}">    
+                    <label for="noteField">Note:</label>
+                    <textarea name="noteField" id="noteField" ng-model="noteCtrl.note" cols="30" rows="10" class="form-control" required></textarea>
+                
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-warning btn-lg btn-block" type="submit"
+                    ng-disabled="noteForm.$invalid">Add</button>
+                </div>
+            </form>
+        </div>
+    <!--</div>
+    <div class="row">-->
+        <div class="col-md-6">
+            <div class="panel panel-success" ng-repeat="n in noteCtrl.notes">
+                <div class="panel-heading">
+                    <h3 class="panel-title"> {{n.title}}</h3>
+                </div>
+                    <div class="panel-body">
+                        <p>{{n.note}}</p>
+                    <p><button class="btn btn-danger btn-xs pull-right" 
+                    ng-click="noteCtrl.deleteNote($index)">Delete</button></p>
+                    </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

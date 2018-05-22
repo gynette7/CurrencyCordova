@@ -1,0 +1,43 @@
+//IIFE
+(function(){
+    
+    //Create module
+    var NoteApp = angular.module("NoteApp",[]);
+
+    //Create Function
+    var NoteCtrl = function(){
+        var noteCtrl = this;
+
+        noteCtrl.title = "";
+        noteCtrl.note = "";
+        noteCtrl.notes = [];
+        noteCtrl.addNote = function(){
+            //{"title":title, "note":note}
+            // Add Note infront using unshift
+            noteCtrl.notes.unshift({
+                title: noteCtrl.title,
+                note: noteCtrl.note 
+            });
+
+            //reset fields
+            noteCtrl.title= "";
+            noteCtrl.note = "";
+
+            console.log(noteCtrl.notes);
+            
+        }
+
+        noteCtrl.deleteNote = function(item){
+            
+            // var index = noteCtrl.notes.indexOf(item);
+            noteCtrl.notes.splice(item,1);
+        }
+
+        noteCtrl.hasError = function(field){
+            return (!field.$pristine && field.$invalid);
+        }
+    }
+
+    //Define NoteCtrl as Controller
+    NoteApp.controller("NoteCtrl", [NoteCtrl]);
+})();
